@@ -1,6 +1,6 @@
 package kr.co.kafkapubtestrs.config;
 
-import com.fasterxml.jackson.databind.ser.std.StringSerializer;
+
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -21,8 +21,8 @@ public class KafkaProducerConfig {
     public ProducerFactory<String, String> producerFactory() {
         Map<String, Object> config = new HashMap<>();
         config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
-        config.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
-        config.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
+        config.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, org.apache.kafka.common.serialization.StringSerializer.class);
+        config.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, org.apache.kafka.common.serialization.StringSerializer.class);
         return new DefaultKafkaProducerFactory<>(config);
     }
 

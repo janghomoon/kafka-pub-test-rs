@@ -4,6 +4,7 @@ import kr.co.kafkapubtestrs.service.KafkaProducerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -13,7 +14,8 @@ public class KafkaController {
     private final KafkaProducerService kafkaProducerService;
 
     @PostMapping("/publish")
-    public ResponseEntity<Void> sendMessage(String message) {
+    public ResponseEntity<Void> sendMessage(@RequestBody
+    String message) {
         kafkaProducerService.sendMessage(message);
         return ResponseEntity.ok().build();
     }
