@@ -19,4 +19,10 @@ public class KafkaProducerService {
         log.info("✅ 메시지 발행됨: {}", message);
     }
 
+    public void sendMessage(String message, int partition) {
+        kafkaTemplate.send(TOPIC_NAME, partition, null, message);
+        kafkaTemplate.send(TOPIC_NAME, message);
+        log.info("✅ 메시지 발행됨: {}", message);
+    }
+
 }

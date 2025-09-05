@@ -20,4 +20,11 @@ public class KafkaController {
         return ResponseEntity.ok().build();
     }
 
+    @PostMapping("/publish-order-guaranteed")
+    public ResponseEntity<Void> sendMessageOrderGuaranteed(@RequestBody
+                                            String message) {
+        kafkaProducerService.sendMessage(message,0);
+        return ResponseEntity.ok().build();
+    }
+
 }
